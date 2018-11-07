@@ -289,17 +289,17 @@ public class OAuth2CookieHelper {
         //if not explicitly defined, use top-level domain
         domain = request.getServerName().toLowerCase();
         //strip off leading www.
-        if (domain.startsWith("www.")) {
-            domain = domain.substring(4);
-        }
-        //strip off subdomains, leaving the top level domain only
-        InternetDomainName domainName = InternetDomainName.from(domain);
-        if (domainName.isUnderPublicSuffix() && !domainName.isTopPrivateDomain()) {
-            //preserve leading dot
-            return "." + domainName.topPrivateDomain().toString();
-        }
+//        if (domain.startsWith("www.")) {
+//            domain = domain.substring(4);
+//        }
+//        //strip off subdomains, leaving the top level domain only
+//        InternetDomainName domainName = InternetDomainName.from(domain);
+//        if (domainName.isUnderPublicSuffix() && !domainName.isTopPrivateDomain()) {
+//            //preserve leading dot
+//            return "." + domainName.topPrivateDomain().toString();
+//        }
         //no top-level domain, stick with default domain
-        return null;
+        return domain;
     }
 
     /**
